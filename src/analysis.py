@@ -1,4 +1,5 @@
 from math import sqrt
+import pandas as pd
 
 
 def calculate_metrics(data):
@@ -22,3 +23,16 @@ def calculate_metrics(data):
     "worst_day": worst_day,
     "average_volume": average_volume,
     }
+
+def calculate_moving_average(data, window):
+
+    if window <= 0:
+        raise ValueError("window must be greater than 0")
+    close = data["Close"]
+    moving_average = close.rolling(window).mean()
+
+    return moving_average
+
+
+
+
